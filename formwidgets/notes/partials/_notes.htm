@@ -1,0 +1,40 @@
+<div
+    class="field-notes <?= $this->previewMode ? 'form-group-preview' : '' ?>"
+    data-control="fieldnotes"
+    data-alias="<?= $this->alias; ?>"
+    <?= !empty($this->autosaveDelay) ? 'data-autosave-delay="' . $this->autosaveDelay . '"' : '' ?>
+    <?= !empty($this->previewMode) ? 'data-preview-mode="' . $this->previewMode . '"' : '' ?>
+>
+    <?php if ($this->previewMode && empty($notesList)) : ?>
+        <div class="row">
+            <div class="col-md-12">
+                <p>No notes to display</p>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="row">
+            <div class="col-md-12 toolbar">
+                <?php if (isset($toolbar)): ?>
+                    <?= $toolbar->render() ?>
+                <?php endif ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div name="notesList" class="field-notes-list" id="<?= $this->getId('notesList') ?>">
+                <?= $this->makePartial('notes_list'); ?>
+            </div>
+            <div id="contentForm" class="field-notes-form">
+                <div id="<?= $this->getId('content') ?>" class="content  loading-indicator-container indicator-center">
+                    <?= count($notesList) > 0 ? $this->makePartial('note_content') : ''; ?>
+                </div>
+                <div class="loading-indicator-container field-notes-notification" hidden>
+                    <div class="loading-indicator size-small">
+                        <span></span>
+                        <div>Saving</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

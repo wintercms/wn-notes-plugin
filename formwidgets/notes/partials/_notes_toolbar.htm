@@ -1,0 +1,16 @@
+<div data-control="toolbar">
+    <button
+        class="btn-icon oc-icon-pencil-square-o"
+        type="button"
+        title="Add new note"
+        data-note-add>
+    </button>
+    <button
+        class="btn-icon oc-icon-trash-o"
+        type="button"
+        data-note-remove
+        title="Delete note"
+        data-request-confirm="<?= e(trans('winter.notes::lang.models.note.delete_confirm')) ?>"
+        data-stripe-load-indicator>
+    </button>
+</div>

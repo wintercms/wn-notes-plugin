@@ -1,0 +1,21 @@
+<ul class="field-notes-items">
+    <?php foreach ($notesList as $index => $note): ?>
+        <li class="field-notes-item"  <?= $note['id'] == 0 ? 'data-note-unsaved': '' ?> >
+            <a
+                href="javascript:;"
+                class="<?= $index === 0 ? 'checked' : ''; ?>"
+                data-request-data="id:<?= e($note['id']) ?>"
+            >
+                <div>
+                    <h3>
+                        <?= e( $note['id'] == 0 ? 'New Note' : $note['name']) ?>
+                    </h3>
+                    <h4>
+                        <?= e($note['updated_at']) ?>
+                        <span> <?= e($note['abstract']) ?></span>
+                    </h4>
+                </div>
+            </a>
+        </li>
+    <?php endforeach ?>
+</ul>

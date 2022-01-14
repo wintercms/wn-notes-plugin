@@ -1,0 +1,10 @@
+fields:
+    name:
+        type: text
+        label: ''
+        span: full
+        placeholder: winter.notes::lang.models.note.name
+    content:
+        type: richeditor
+        label: ''
+        stretch: true

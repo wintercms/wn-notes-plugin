@@ -1,0 +1,21 @@
+{
+    "name": "winter/wn-notes-plugin",
+    "type": "winter-plugin",
+    "description": "Easily add notes to any record in WinterCMS",
+    "homepage": "https://github.com/wintercms/wn-notes-plugin",
+    "keywords": ["winter", "wintercms", "notes", "dynamic notes", "macos notes"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luke Towers",
+            "email": "luke@luketowers.ca"
+        },
+        {
+            "name": "Eric Yang",
+            "email": "ericy@captive.ca"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.11"
+    }
+}

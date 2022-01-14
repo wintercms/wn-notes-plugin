@@ -1,0 +1,7 @@
+columns:
+    name:
+        label: name
+        type: text
+    updated_at:
+        label: updated_at
+        type: datetime

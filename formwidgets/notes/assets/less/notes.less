@@ -1,0 +1,234 @@
+@list_background_color: #ededed;
+@content_background_color: #ecf0f1;
+@height: 560px;
+
+@list_title_font_size: 13px;
+@list_title_highlight_font_size: 24px;
+@list_date_font_size: 11px;
+@list_item_height: 36px;
+@list_item_active_background: #d0d9dd;
+
+@content_font_size : 16px;
+
+@tinyScreen:    ~"only screen and (min-width: 699px)";
+@smallScreen:   ~"only screen and (min-width: 700px) and (max-width: 799px)";
+@largeScreen:   ~"only screen and (min-width: 800px)";
+
+
+@media @tinyScreen {
+    .field-notes {
+        .field-notes-list{
+            float: none;
+            width: 100%;
+        }
+        .field-notes-form{
+            float: none;
+            width: 100%;
+        }
+    }
+}
+
+@media @smallScreen {
+    .field-notes {
+        .field-notes-list{
+            float: left;
+            width: 200px;
+        }
+        .field-notes-form{
+            float: left;
+            width: ~"calc(100% - 200px) !important";
+        }
+    }
+}
+@media @largeScreen {
+    .field-notes {
+        .field-notes-list{
+            float: left;
+            width: 260px;
+        }
+        .field-notes-form{
+            float: left;
+            width: ~"calc(100% - 260px) !important";
+        }
+    }
+}
+
+.field-notes {
+    &.form-group-preview{
+        .toolbar {
+            .btn-icon {
+                visibility: hidden;
+            }
+            input {
+                background-color: white;
+            }
+        }
+    }
+
+    .toolbar {
+        padding-left: 0;
+        padding-right: 0;
+
+        [class*=" oc-icon-"]:before {
+            margin-right: 0 !important;
+            color: black;
+            vertical-align: middle;
+        }
+
+        [class*=" oc-icon-"]:hover:before {
+            color:white;
+        }
+        [class*=" oc-icon-"]:disabled:before {
+            color: fade(black, 30%);
+        }
+
+        .btn-icon {
+            height: 1.5em;
+            width: 2em;
+            line-height: 1;
+            background: #ffffff;
+            border-radius: 3px;
+            margin-right: 1em;
+            border: 1px solid #d1d6da;
+        }
+        .btn-icon:hover{
+            background: #4390d2;
+        }
+        .btn-icon:hover:disabled {
+            background: white;
+        }
+
+    }
+    .field-notes-list {
+        background: @list_background_color;
+        max-height: @height;
+
+        padding-left: 0px;
+        padding-right: 0px;
+        position: relative;
+
+        >ul {
+            line-height: @list_item_height;
+            font-size: @list_title_font_size;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            height: @height;
+            overflow: auto;
+
+            >li {
+                display: list-item;
+                cursor: pointer;
+                border-bottom: 1px solid #ccc;
+
+                div {
+                    font-size: @list_title_font_size;
+                    h3 {
+                        font-size: @list_title_font_size;
+                        word-wrap:break-word;
+                    }
+
+                    h4 {
+                        font-size: @list_date_font_size;
+                        span {
+                            color: fade(black, 50%);
+                        }
+                    }
+                }
+                &.fade {
+                    opacity: 0;
+                    transition: all 1.4s ease-out;
+                }
+                &.show{
+                    opacity: 1;
+                }
+            }
+
+            >li:last-child {
+                border: none;
+            }
+
+            .checked {
+                background: @list_item_active_background;
+                h3 {
+                    font-weight: bold;
+                    font-size: @list_title_highlight_font_size;
+                }
+            }
+
+            >li a:hover {
+                font-size: @list_title_highlight_font_size;
+
+                h3 {
+                    font-size: @list_title_highlight_font_size;
+                }
+            }
+
+            >li a {
+                text-decoration: none;
+                color: #000;
+                display: block;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 3px;
+                padding-top: 3px;
+
+                h3 {
+                    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+                    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+                    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+                    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+                    transition: font-size 0.3s ease, background-color 0.3s ease;
+                    font-weight: bold;
+                }
+
+            }
+        }
+    }
+
+    .field-notes-form {
+        background: @content_background_color;
+        height: @height;
+        font-size: @content_font_size;
+        padding: 15px;
+        position: relative;
+
+        >.content{
+            height: 100%;
+            .form-tabless-fields {
+                height: 100%;
+                .field-richeditor {
+                    height: ~"calc(100% - 58px) !important";
+                }
+                .form-group-preview {
+                    > span {
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                    > div {
+                        &.form-control{
+                            height: ~"calc(100% - 58px) !important";
+                            overflow-y: auto !important;
+                            position: absolute !important;
+                        }
+                    }
+                }
+            }
+
+            .loading-indicator{
+                background: @content_background_color;
+            }
+        }
+
+        .field-notes-notification {
+
+            position: absolute;
+            bottom: 15px;
+            left: 25px;
+            right: 25px;
+            >div{
+                background: transparent;
+            }
+        }
+    }
+}
