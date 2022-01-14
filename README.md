@@ -2,15 +2,15 @@
 
 Easily add notes to any record in WinterCMS through a Mac OS-like user experience.
 
+<p align="center">
+    <img src="https://github.com/wintercms/wn-notes-plugin/raw/main/assets/images/screenshot.png?raw=true" alt="Screenshot of Notes FormWidget" width="100%" />
+</p>
+
 # Installation
 
-To install from the [Marketplace](https://wintercms.com/plugin/winter-notes), click on the "Add to Project" button and then select the project you wish to add it to before updating the project to pull in the plugin.
-
-To install from the backend, go to **Settings -> Updates & Plugins -> Install Plugins** and then search for `Winter.Notes`.
+To install it with Composer, run `composer require wintercms/wn-notes-plugin` from your project root.
 
 To install from [the repository](https://github.com/wintercms/wn-notes-plugin), clone it into `plugins/winter/notes` and then run `composer update` from your project root in order to pull in the dependencies.
-
-To install it with Composer, run `composer require wintercms/wn-notes-plugin` from your project root.
 
 # Documentation
 
