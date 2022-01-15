@@ -8,7 +8,7 @@
     <?php if ($this->previewMode && empty($notesList)) : ?>
         <div class="row">
             <div class="col-md-12">
-                <p>No notes to display</p>
+                <p><?= e(trans('winter.notes::lang.models.note.no_notes_to_display')) ?></p>
             </div>
         </div>
     <?php else: ?>
@@ -25,13 +25,13 @@
                 <?= $this->makePartial('notes_list'); ?>
             </div>
             <div id="contentForm" class="field-notes-form">
-                <div id="<?= $this->getId('content') ?>" class="content  loading-indicator-container indicator-center">
+                <div id="<?= $this->getId('content') ?>" class="content loading-indicator-container indicator-center">
                     <?= count($notesList) > 0 ? $this->makePartial('note_content') : ''; ?>
                 </div>
                 <div class="loading-indicator-container field-notes-notification" hidden>
                     <div class="loading-indicator size-small">
                         <span></span>
-                        <div>Saving</div>
+                        <div><?= e(trans('winter.notes::lang.models.note.saving')) ?></div>
                     </div>
                 </div>
             </div>

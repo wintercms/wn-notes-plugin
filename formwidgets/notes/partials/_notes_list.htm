@@ -8,7 +8,7 @@
             >
                 <div>
                     <h3>
-                        <?= e( $note['id'] == 0 ? 'New Note' : $note['name']) ?>
+                        <?= e( $note['id'] == 0 ? e(trans('winter.notes::lang.models.note.new_note')) : $note['name']) ?>
                     </h3>
                     <h4>
                         <?= e($note['updated_at']) ?>

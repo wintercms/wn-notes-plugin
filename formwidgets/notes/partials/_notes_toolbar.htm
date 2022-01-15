@@ -2,14 +2,14 @@
     <button
         class="btn-icon oc-icon-pencil-square-o"
         type="button"
-        title="Add new note"
+        title="<?= e(trans('winter.notes::lang.models.note.add_new_note')) ?>"
         data-note-add>
     </button>
     <button
         class="btn-icon oc-icon-trash-o"
         type="button"
         data-note-remove
-        title="Delete note"
+        title="<?= e(trans('winter.notes::lang.models.note.delete_note')) ?>"
         data-request-confirm="<?= e(trans('winter.notes::lang.models.note.delete_confirm')) ?>"
         data-stripe-load-indicator>
     </button>
