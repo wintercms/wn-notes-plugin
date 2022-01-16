@@ -8,7 +8,7 @@ Easily add notes to any record in WinterCMS through a Mac OS-like user experienc
 
 # Installation
 
-To install it with Composer, run `composer require wintercms/wn-notes-plugin` from your project root.
+To install it with Composer, run `composer require winter/wn-notes-plugin` from your project root.
 
 To install from [the repository](https://github.com/wintercms/wn-notes-plugin), clone it into `plugins/winter/notes` and then run `composer update` from your project root in order to pull in the dependencies.
 
