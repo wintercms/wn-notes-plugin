@@ -42,3 +42,41 @@ public $morphMany = [
     'notes' => [\Winter\Notes\Models\Note::class, 'name' => 'target']
 ];
 ```
+
+## Add notes fields to third party plugins
+In your custom `Plugin.php` plugin class, do the following:
+
+```php
+<?php namespace MyAuthor\MyPlugin;
+
+use Event;
+use System\Classes\PluginBase;
+use Winter\Blog\Models\Post;
+
+class Plugin extends PluginBase
+{
+    public function boot()
+    {
+        // Extend the Winter.Blog Post model to add the `notes` relationship
+        Post::extend(function ($model) {
+            $model->morphMany = array_merge($model->morphMany, ['notes' => [\Winter\Notes\Models\Note::class, 'name' => 'target']]);
+        });
+
+        // Extend the backend fields to add the notes field
+        Event::listen('backend.form.extendFieldsBefore', function ($widget) {
+            // Only extend forms for the Post model
+            if (!($widget->model instanceof Post)) {
+                return;
+            }
+
+            // Add the notes field to the form
+            $widget->fields = array_merge($widget->fields, ['notes' => [
+                'label' => '',
+                'tab'   => 'Notes',
+                'type'  => 'Notes',
+                'span'  => 'full',
+            ]]);
+        });
+    }
+}
+```
