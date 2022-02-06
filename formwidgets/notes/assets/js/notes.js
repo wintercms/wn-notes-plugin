@@ -311,7 +311,7 @@
         if (this.testNoteOnFocus()) {
             this.stopDelaySaving();
             if (this.testSelectedNote()) {
-                this.showNotification('Saving ...', false );
+                this.showNotification(langNotes.saving + ' ...', false );
                 this.postNoteData();
             }
             return false;
@@ -398,7 +398,7 @@
         //Do it manualy
         this.stopDelaySaving();
         if (this.testSelectedNote() && this.testSavingConditions()) {
-            this.showNotification('Saving ...', false );
+            this.showNotification(langNotes.saving + ' ...', false );
             this.postNoteData(onSuccessCallback,onErrorCallback);
             return false;
         }else{
@@ -450,13 +450,13 @@
 
     Notes.prototype.setCreateNewNoteButtonEnable = function(enable) {
         this.$createNewNoteButton.prop('disabled', !enable);
-        var title = enable ? 'Add new note' : 'Finish saving this note before you can add a new one';
+        var title = enable ? langNotes.addNew : langNotes.finishSaving;
         this.$createNewNoteButton.attr('title', title);
     }
 
     Notes.prototype.setRemoveNoteButtonEnable = function (enable) {
         this.$removeNoteButton.prop('disabled', !enable);
-        var title = enable ? 'Delete note' : 'Note must exist before it can be deleted';
+        var title = enable ? langNotes.delete : langNotes.mustExist;
         this.$removeNoteButton.attr('title', title);
     }
 
@@ -493,7 +493,7 @@
             let currentTime = new Date().toLocaleTimeString();
             self.clearNoteListCheckedStyle();
 
-            self.$el.find('> .row > .field-notes-list > .field-notes-items').prepend('<li data-note-unsaved class="fade field-notes-item"><a href="javascript:;"   data-request-data="id:0" class="checked"><div><h3>New note</h3><h4>' + currentTime + '<span></span></h4></div></a></li>');
+            self.$el.find('> .row > .field-notes-list > .field-notes-items').prepend('<li data-note-unsaved class="fade field-notes-item"><a href="javascript:;"   data-request-data="id:0" class="checked"><div><h3>' + langNotes.new + '</h3><h4>' + currentTime + '<span></span></h4></div></a></li>');
             let newNote = self.$el.find('> .row > .field-notes-list > .field-notes-items li:first-child');
             self.fetchSelectedNote(newNote, activeNameField);
             self.notesListScrollToItem(newNote);
@@ -562,7 +562,7 @@
 
         }
         $.wn.flashMsg({
-            text: 'Note has been deleted',
+            text: langNotes.hasDeleted,
             'class': 'success',
             'interval': 2
         });
@@ -680,7 +680,7 @@
             data: noteData,
             success: function(data, textStatus, jqXHR){
                 self.onNoteSaveSuccess(data, textStatus, jqXHR);
-                self.showNotification('Note has been saved', true, 500);
+                self.showNotification(langNotes.hasSaved, true, 500);
                 self.setLastSavingNoteData();
                 self.$isSaving = false;
                 onSuccessCallback();
@@ -728,7 +728,7 @@
         // create a new timer;
         this.$savingTimeout = setTimeout(function() {
             if (self.testSelectedNote() && self.testSavingConditions()) {
-                self.showNotification('Saving ...', false );
+                self.showNotification(langNotes.saving + ' ...', false );
                 self.postNoteData();
             }
         }, this.options.autosaveDelay);
